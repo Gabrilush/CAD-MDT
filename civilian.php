@@ -445,7 +445,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="col">
                     <div class="card-box">
                         <div class="dropdown pull-right">
-                            <button class="btn btn-success btn-sm w-40" data-toggle="modal" data-target="#newVehicleModal">Agregar Vehículo</button>
+                            <button class="btn btn-success btn-sm w-40" data-toggle="modal" data-target="#newVehicleModal">Agregar vehículo</button>
                         </div>
                         <h4 class="header-title mt-0 m-b-30">Vehículos de <?php echo $_SESSION['character_first_name'] ?></h4>
                         <!-- CONTENT -->
@@ -455,9 +455,9 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="col">
                     <div class="card-box">
                         <div class="dropdown pull-right">
-                            <button class="btn btn-success btn-sm w-40" data-toggle="modal" data-target="#newFirearmModel">Agegar Arma de Fuego</button>
+                            <button class="btn btn-success btn-sm w-40" data-toggle="modal" data-target="#newFirearmModel">Agregar arma de fuego</button>
                         </div>
-                        <h4 class="header-title mt-0 m-b-30">Armas de Feuego de <?php echo $_SESSION['character_first_name'] ?>'</h4>
+                        <h4 class="header-title mt-0 m-b-30">Armas de fuego de <?php echo $_SESSION['character_first_name'] ?></h4>
                         <!-- CONTENT -->
                         <div id="getFirearms">Cargando...</div>
                     </div>
@@ -467,7 +467,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
             <div class="row">
                 <div class="col">
                     <div class="card-box">
-                        <h4 class="header-title mt-0 m-b-30">Multas de <?php echo $_SESSION['character_first_name'] ?></h4>
+                        <h4 class="header-title mt-0 m-b-30">Tickets de <?php echo $_SESSION['character_first_name'] ?></h4>
                         <!-- CONTENT -->
                         <div id="getTickets">Cargando...</div>
                     </div>
@@ -530,7 +530,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                             </div>
                         </div>
                         <?php endif; ?>
-                        <h4 class="header-title mt-0 m-b-30">Aviso de <?php echo $_SESSION['character_first_name'] ?></h4>
+                        <h4 class="header-title mt-0 m-b-30">Orden de búsqueda de <?php echo $_SESSION['character_first_name'] ?></h4>
                         <!-- CONTENT -->
                         <div id="getWarrants">Cargando...</div>
                     </div>
