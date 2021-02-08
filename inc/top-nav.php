@@ -64,7 +64,7 @@
                             <a href="<?php echo $url['civilian']; ?>?v=nosession"><i class="mdi mdi-contacts"></i> <span> REGISTRO CRIMINAL </span> </a>
                         </li>
                         <li class="has-submenu">
-                            <a href="<?php echo $url['leo']; ?>?v=nosession"><i class="mdi mdi-laptop"></i> <span> MOBILE DATA COMPUTER </span> </a>
+                            <a href="<?php echo $url['leo']; ?>?v=nosession"><i class="mdi mdi-laptop"></i> <span> MOBILE DIGITAL COMPUTER </span> </a>
                         </li>
                         <li class="has-submenu">
                             <a href="dispatch.php?v=nosession"><i class="mdi mdi-phone-in-talk"></i> <span> SCC </span> </a>

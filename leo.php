@@ -7,7 +7,7 @@ require_once 'inc/config.php';
 
 require_once 'inc/backend/user/auth/userIsLoggedIn.php';
 
-$page['name'] = 'MOBILE DATA COMPUTER';
+$page['name'] = 'MOBILE DIGITAL COMPUTER';
 
 // Page PHP
 $view = strip_tags($_GET['v']);
