@@ -142,14 +142,14 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="col">
                     <div class="card-box">
                         <select class="form-control" id="listIdentitys" onchange="location = this.value;">
-                            <option selected="true" disabled="disabled">Cargando identidades...</option>
+                            <option selected="true" disabled="disabled">Cargando...</option>
                         </select>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card-box">
                         <h4 class="header-title mt-0 m-b-30">CREAR PERSONAJE DE LA LEY</h4>
-                        Es recomendado utilizar el Nombre Apellido de tu personaje dentro del rol. Todo personaje no autorizado por la dirección de LSPD o LSSD no va a estar autorizado a ingresar acá.
+                        Es recomendado utilizar el Nombre Apellido de tu personaje dentro del servidor. Todo personaje no autorizado por la dirección de LSPD o LSSD no va a estar autorizado a ingresar en la base de datos.
                         <form class="form-horizontal m-t-20" id="createIdentity" action="inc/backend/user/leo/createIdentity.php" method="POST">
                             <div class="row">
                                 <div class="col">
@@ -162,14 +162,14 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                                 <div class="col">
                                     <div class="form-group">
                                         <select class="form-control" id="listLeoDivisions" name="division" required>
-                                            <option selected="true" disabled="disabled">Cargando divisiones...</option>
+                                            <option selected="true" disabled="disabled">Cargando...</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <input class="btn btn-success btn-block" type="submit" value="Crear Oficial">
+                                    <input class="btn btn-success btn-block" type="submit" value="CREAR LEO">
                                 </div>
                             </div>
                         </form>
@@ -216,7 +216,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                         error = JSON.parse(error);
                         if (error['msg'] === "") {
                             $("#addWarrant")[0].reset();
-                            toastr.success('Busqueda agregada.', 'System:', {
+                            toastr.success('Búsqueda agregada', 'System:', {
                                 timeOut: 10000
                             })
                         } else {
@@ -276,16 +276,16 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                                             "preventDuplicates": true,
                                             "preventOpenDuplicates": true
                                         };
-                                        toastr.error('SIGNAL 100 IS IN EFFECT.', 'System:', {
+                                        toastr.error('998 ACTIVO', 'System:', {
                                             timeOut: 10000
                                         })
-                                        $('#signal100Status').html("<font color='red'><b> - SIGNAL 100 IS IN EFFECT</b></font>");
+                                        $('#signal100Status').html("<font color='red'><b> 998 ESTÁ EN VIGENCIA</b></font>");
 
                                         if (!signal100) {
                                             var audio = new Audio('assets/sounds/signal100.mp3');
                                             audio.play();
                                             setTimeout(() => {
-                                                var msg = new SpeechSynthesisUtterance('Signal 100 Activated - Check CAD For Details');
+                                                var msg = new SpeechSynthesisUtterance('998 in progress, wait for new information');
                                                 var voices = window.speechSynthesis.getVoices();
                                                 window.speechSynthesis.speak(msg);
                                             }, 3000);
@@ -315,14 +315,14 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                                 <div id="getTime">Cargando...</div>
                             </b>
                         </div>
-                        <h4 class="header-title mt-0 m-b-30"><?php echo $_SESSION['identity_name']; ?> <?php if ($_SESSION['identity_supervisor'] === "Yes"): ?><small><i>Supervisor</i></small><?php endif; ?> <label id="signal100Status">Loading...</label></h4>
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openNameSearch">DB de Personas</button>
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openVehicleSearch">DB de Vehiculos</button>
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openFirearmSearch">DB de Armas</button>
+                        <h4 class="header-title mt-0 m-b-30"><?php echo $_SESSION['identity_name']; ?> <?php if ($_SESSION['identity_supervisor'] === "Yes"): ?><small><i>Supervisor</i></small><?php endif; ?> <label id="signal100Status">Cargando...</label></h4>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openNameSearch">DB de personas</button>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openVehicleSearch">DB de vehículos</button>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openFirearmSearch">DB de armas</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newTicketModal">Tickets</button>
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newArrestReportModal">Reporte de Arrestos</button>
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#notepadModal">Notas Personales</button>
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#activeUnitsModal">Unidades Activas</button>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newArrestReportModal">Reporte de arrestos</button>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#notepadModal">Notas personales</button>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#activeUnitsModal">Unidades en tour de guardia</button>
                         <!--<button class="btn btn-danger btn-sm" onclick="officerPanicBtn();">PANIC BUTTON</button>-->
                         <?php if ($_SESSION['identity_supervisor'] === "Yes" || staff_siteSettings === 'true'): ?>
                         <a href="leo.php?v=supervisor"><button class="btn btn-darkred btn-sm">Panel de Supervisor</button></a>
@@ -334,20 +334,20 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
             <div class="row">
                 <div class="col-9">
                     <div class="card-box">
-                        <h4 class="header-title mt-0 m-b-30">Mis Avisos
+                        <h4 class="header-title mt-0 m-b-30">Llamados de servicio
                         </h4>
                         <div id="getMyCalls"></div>
                         <div id="noDis911Calls"></div>
                     </div>
 
                     <div class="card-box">
-                        <h4 class="header-title mt-0 m-b-30">BOLO's Activos</h4>
+                        <h4 class="header-title mt-0 m-b-30">BOLOs activos</h4>
                         <div id="getBolos"></div>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="card-box">
-                        <h4 class="header-title mt-0 m-b-30">Estado Actual: <label id="getDutyStatus">Cargando...</label></h4>
+                        <h4 class="header-title mt-0 m-b-30">Estado actual: <label id="getDutyStatus">Cargando...</label></h4>
                         <div class="form-group">
                             <select class="form-control" name="setUnitStatus" onChange='setUnitStatus(this)'>
                                 <?php
@@ -363,9 +363,9 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                         </div>
                     </div>
 
-                    <?php if($_SESSION['identity_supervisor'] === "Yes" || staff_siteSettings === 'true'): ?>
+                    <!--<?php if($_SESSION['identity_supervisor'] === "Yes" || staff_siteSettings === 'true'): ?>
                     <div class="card-box">
-                        <h4 class="header-title mt-0 m-b-30">AOP Editor</h4>
+                        <h4 class="header-title mt-0 m-b-30"></h4>
                         <form method="post" action="inc/backend/user/leo/setAOP.php" id="changeAOP">
                             <div class="form-group">
                                 <div class="col">
@@ -379,7 +379,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                             </div>
                         </form>
                     </div>
-                    <?php endif; ?>
+                    <?php endif; ?>-->
 
                     <?php if($settings['add_warrant'] === "supervisor" && $_SESSION['identity_supervisor'] === "Yes" || staff_siteSettings === 'true'): ?>
                     <div class="card-box">
@@ -388,7 +388,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                             <div class="form-group">
                                 <div class="col">
                                     <select class="form-control select2" name="civilian" id="getAllCharacters4">
-                                        <option selected="true" disabled="disabled">Cargando personas...</option>
+                                        <option selected="true" disabled="disabled">Cargando...</option>
                                     </select>
                                 </div>
                             </div>
@@ -406,12 +406,12 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                     </div>
                     <?php elseif ($settings['add_warrant'] === "all"): ?>
                     <div class="card-box">
-                        <h4 class="header-title mt-0 m-b-30">Creador de Búsquedas Rápido</h4>
+                        <h4 class="header-title mt-0 m-b-30">Creador de órdenes de búsqueda rápido</h4>
                         <form method="post" action="inc/backend/user/leo/addWarrant.php" id="addWarrant">
                             <div class="form-group">
                                 <div class="col">
                                     <select class="select2" name="civilian" id="getAllCharacters4">
-                                        <option selected="true" disabled="disabled">Cargando Personas...</option>
+                                        <option selected="true" disabled="disabled">Cargando...</option>
                                     </select>
                                 </div>
                             </div>
@@ -422,7 +422,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                             </div>
                             <div class="form-group">
                                 <div class="col">
-                                    <button class="btn btn-info btn-bordred btn-block waves-effect waves-light" onClick="disableClick()" type="submit">Añadir Búsqueda</button>
+                                    <button class="btn btn-info btn-bordred btn-block waves-effect waves-light" onClick="disableClick()" type="submit">Añadir búsqueda</button>
                                 </div>
                             </div>
                         </form>
@@ -437,7 +437,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Información de Aviso</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Información de llamados de servicio</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -454,7 +454,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">DB de Personas</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">DB de personas</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -462,7 +462,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                         <div class="modal-body">
                             <form>
                                 <select class="select2" name="nameSearch" id="getAllCharacters" onchange="showName(this.value)">
-                                    <option selected="true" disabled="disabled">Cargando personas...</option>
+                                    <option selected="true" disabled="disabled">Cargando...</option>
                                 </select>
                             </form>
                             <br>
@@ -477,7 +477,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">DB de Vehículos</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">DB de vehículos</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -485,7 +485,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                         <div class="modal-body">
                             <form>
                                 <select class="select2" name="vehicleSearch" id="getAllVehicles" onchange="showVehicle(this.value)">
-                                    <option selected="true" disabled="disabled">Cargando vehículos...</option>
+                                    <option selected="true" disabled="disabled">Cargando...</option>
                                 </select>
                             </form>
                             <br>
@@ -500,7 +500,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">DB de Armas</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">DB de armas</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -508,7 +508,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                         <div class="modal-body">
                             <form>
                                 <select class="select2" name="firearmSearch" id="getAllFirearms" onchange="showFirearm(this.value)">
-                                    <option selected="true" disabled="disabled">Cargando armas...</option>
+                                    <option selected="true" disabled="disabled">Cargando...</option>
                                 </select>
                             </form>
                             <br>
@@ -523,7 +523,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-md modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Unidades Activas</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Unidades en tour de guardia</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -541,7 +541,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Notas Personales</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Notas personales</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -562,7 +562,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-md modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Escribiendo Nuevo Ticket</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Escribiendo nuevo ticket</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -571,24 +571,24 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                             <form id="newTicket" action="inc/backend/user/leo/newTicket.php" method="post">
                                 <div class="form-group">
                                     <select class="select2" name="suspect" id="getAllCharacters2" required>
-                                        <option selected="true" disabled="disabled">Cargando Personas...</option>
+                                        <option selected="true" disabled="disabled">Cargando...</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="location" class="form-control" placeholder="Ubicación" data-lpignore="true" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="postal" class="form-control" pattern="\d*" placeholder="(Nearest Postal)" data-lpignore="true" required />
+                                    <input type="text" name="postal" class="form-control" pattern="\d*" placeholder="(Código postal)" data-lpignore="true" required />
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="amount" class="form-control" pattern="\d*" placeholder="Monto" data-lpignore="true" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="reason" class="form-control" maxlength="255" placeholder="Razon(es)" data-lpignore="true" required />
+                                    <input type="text" name="reason" class="form-control" maxlength="255" placeholder="Razón(es)" data-lpignore="true" required />
                                 </div>
                                 <div class="modal-footer">
                                     <div class="form-group">
-                                        <input class="btn btn-primary" onClick="disableClick()" type="submit" value="Finalizar Ticket">
+                                        <input class="btn btn-primary" onClick="disableClick()" type="submit" value="Finalizar">
                                     </div>
                                 </div>
                             </form>
@@ -602,7 +602,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-md modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Escribir Nuevo Reporte de Arresto</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Escribir nuevo reporte de arresto</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -611,7 +611,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                             <form id="newArrestReport" action="inc/backend/user/leo/newArrestReport.php" method="post">
                                 <div class="form-group">
                                     <select class="select2" name="suspect" id="getAllCharacters3" required>
-                                        <option selected="true" disabled="disabled">Cargando personas...</option>
+                                        <option selected="true" disabled="disabled">Cargando...</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -689,7 +689,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                     </div>
                     <?php endif; ?>
                     <div class="card-box">
-                        <h4 class="header-title mt-0 m-b-30">Editar Oficial (<?php echo $editing_id['name']; ?>)</h4>
+                        <h4 class="header-title mt-0 m-b-30">Editar LEO (<?php echo $editing_id['name']; ?>)</h4>
                         <form method="POST">
                             <div class="form-group">
                                 <div class="col-12">
@@ -865,7 +865,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 </div>
                 <div class="col-5">
                     <div class="card-box">
-                        <h4 class="header-title mt-0 m-b-30">Oficiales Pendientes</h4>
+                        <h4 class="header-title mt-0 m-b-30">LEOs pendientes</h4>
                         <div id="getPendingIds"></div>
                     </div>
                 </div>
@@ -873,7 +873,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
             <?php endif; ?>
             <?php else: ?>
             <div class="alert alert-danger" role="alert">
-                No eres supervisor.
+                No eres Supervisor
             </div>
             <?php endif; ?>
             <?php break; ?>

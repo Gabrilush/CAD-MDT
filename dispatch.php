@@ -258,16 +258,16 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                                             "preventDuplicates": true,
                                             "preventOpenDuplicates": true
                                         };
-                                        toastr.error('SIGNAL 100 IS IN EFFECT.', 'System:', {
+                                        toastr.error('998 ACTIVO.', 'System:', {
                                             timeOut: 10000
                                         })
-                                        $('#signal100Status').html("<font color='red'><b> - SIGNAL 100 IS IN EFFECT</b></font>");
+                                        $('#signal100Status').html("<font color='red'><b>998 ESTÁ EN VIGENCIA</b></font>");
 
                                         if (!signal100) {
                                             var audio = new Audio('assets/sounds/signal100.mp3');
                                             audio.play();
                                             setTimeout(() => {
-                                                var msg = new SpeechSynthesisUtterance('Signal 100 Activated - Check CAD For Details');
+                                                var msg = new SpeechSynthesisUtterance('998 in progress, wait for new information');
                                                 var voices = window.speechSynthesis.getVoices();
                                                 window.speechSynthesis.speak(msg);
                                             }, 3000);
@@ -305,7 +305,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#notepadModal">Notas Personales</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#new911callModal">Crear Aviso</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newBoloModel">Crear BOLO</button>
-                        <!--<button class="btn btn-danger btn-sm" onclick="changeSignal();">Signal 100</button>-->
+                        <button class="btn btn-danger btn-sm" onclick="changeSignal();">998</button>
                         <?php if ($_SESSION['identity_supervisor'] === "Yes" || staff_siteSettings === 'true'): ?>
                         <a href="dispatch.php?v=supervisor"><button class="btn btn-darkred btn-sm">Supervisar</button></a>
                         <?php endif; ?>
