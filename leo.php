@@ -315,11 +315,11 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                                 <div id="getTime">Cargando...</div>
                             </b>
                         </div>
-                        <h4 class="header-title mt-0 m-b-30"><?php echo $_SESSION['identity_name']; ?> <?php if ($_SESSION['identity_supervisor'] === "Yes"): ?><small><i>Supervisor</i></small><?php endif; ?> <label id="signal100Status">Cargando...</label></h4>
+                        <h4 class="header-title mt-0 m-b-30"><?php echo $_SESSION['identity_name']; ?> <?php if ($_SESSION['identity_supervisor'] === "Yes"): ?><small><font color="white"><i>Supervisor</i></font></small><?php endif; ?> <label id="signal100Status">Cargando...</label></h4>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openNameSearch">DB de personas</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openVehicleSearch">DB de vehículos</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#openFirearmSearch">DB de armas</button>
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newTicketModal">Tickets</button>
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newTicketModal">Registrar antecedente</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newArrestReportModal">Reporte de arrestos</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#notepadModal">Notas personales</button>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#activeUnitsModal">Unidades en tour de guardia</button>
@@ -562,7 +562,7 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                 <div class="modal-dialog modal-md modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Escribiendo nuevo ticket</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Redacción de antecedente</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -575,16 +575,16 @@ if (isset($_GET['v']) && strip_tags($_GET['v']) === 'setsession') {
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="location" class="form-control" placeholder="Ubicación" data-lpignore="true" required />
+                                    <input type="text" name="location" class="form-control" placeholder="Callsign" data-lpignore="true" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="postal" class="form-control" pattern="\d*" placeholder="(Código postal)" data-lpignore="true" required />
+                                    <input type="text" name="postal" class="form-control" pattern="\d*" placeholder="¿Multado?" data-lpignore="true" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="amount" class="form-control" pattern="\d*" placeholder="Monto" data-lpignore="true" required />
+                                    <input type="text" name="amount" class="form-control" placeholder="Motivo" data-lpignore="true" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="reason" class="form-control" maxlength="255" placeholder="Razón(es)" data-lpignore="true" required />
+                                    <input type="text" name="reason" class="form-control" maxlength="255" placeholder="Descripción breve (255 caracteres)" data-lpignore="true" required />
                                 </div>
                                 <div class="modal-footer">
                                     <div class="form-group">

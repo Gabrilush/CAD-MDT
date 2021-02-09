@@ -32,53 +32,53 @@
     $characterWarrants = $charWanted->fetchAll();
 
     if (!empty($characterWarrants)) {
-      echo '<div class="alert alert-danger" role="alert">This Person Is WANTED. Proceed with caution</div>';
+      echo '<div class="alert alert-danger" role="alert">ESTA PERSONA ESTÁ SIENDO BUSCADA, PROCEDA CON PRECAUCIÓN.</div>';
     }
 
     echo '
     <div class="row">
       <div class="col-6">
-        <h4 class="header-title mt-0 m-b-30">Person Info</h4>
+        <h4 class="header-title mt-0 m-b-30">INFORMACIÓN DE PERSONA</h4>
         <hr />
-        <h5>Name: '.$character['first_name'].' '.$character['last_name'].'</h5>
-        <h5>Sex: '.$character['sex'].'</h5>
-        <h5>Race: '.$character['race'].'</h5>
-        <h5>Date of Birth: '.$character['date_of_birth'].'</h5>
-        <h5>Address: '.$character['address'].'</h5>
+        <h5>NOMBRE: '.$character['first_name'].' '.$character['last_name'].'</h5>
+        <h5>GÉNERO: '.$character['sex'].'</h5>
+        <h5>RAZA: '.$character['race'].'</h5>
+        <h5>FECHA DE EMISIÓN: '.$character['date_of_birth'].'</h5>
+        <h5>DIRECCIÓN DE RESIDENCIA: '.$character['address'].'</h5>
 
-        <h5>Height / Weight: '.$character['height'].' '.$character['weight'].'</h5>
-        <h5>Hair Color: '.$character['hair_color'].'</h5>
-        <h5>Eye Color: '.$character['eye_color'].'</h5>
+        <h5>ALTURA / PESO: '.$character['height'].' '.$character['weight'].'</h5>
+        <h5>COLOR DE CABELLO: '.$character['hair_color'].'</h5>
+        <h5>COLOR DE OJOS: '.$character['eye_color'].'</h5>
       </div>
 
       <div class="col-6">
-        <h4 class="header-title mt-0 m-b-30">License Info</h4>
+        <h4 class="header-title mt-0 m-b-30">INFORMACIÓN DMV</h4>
         <hr />
-        <h5>Drivers License: '.$character['license_driver'].'</h5>
-        <h5>Firearm License: '.$character['license_firearm'].'</h5>
+        <h5>LICENCIA DE CONDUCIR: '.$character['license_driver'].'</h5>
+        <h5>PERMISO DE ARMAS: '.$character['license_firearm'].'</h5>
       </div>
     </div><br />
     <div class="row">
-      <div class="col-6">
-        <h4 class="header-title mt-0 m-b-30">Ticket History</h4>
+      <div class="col-12">
+        <h4 class="header-title mt-0 m-b-30">HISTORIAL DE ANTECEDENTES</h4>
         <hr />';
         if (empty($characterTickets)) {
-        	echo 'No Tickets On File.';
+        	echo 'No hay historial.';
         } else {
           echo '<table class="table table-borderless">
                   <thead>
                     <tr>
-                        <th>Reason</th>
-                        <th>Fine Amount</th>
-                        <th>Timestamp</th>
-                        <th>Officer</th>
+                        <th>ANTECEDENTE</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>FECHA DE EMISIÓN</th>
+                        <th>OFICIAL</th>
                     </tr>
                   </thead>
                   <tbody>';
         	foreach($characterTickets as $ticket) {
         		echo '<tr>
-                    <td>' . $ticket['reasons'] . '</td>
                     <td>' . $ticket['amount'] . '</td>
+                    <td>' . $ticket['reasons'] . '</td>
                     <td>' . $ticket['ticket_timestamp'] . '</td>
                     <td>' . $ticket['officer'] . '</td>
                 </tr>';
@@ -88,19 +88,20 @@
         }
 
       echo '</div>
+      </div><br />
 
-      <div class="col-6">
-        <h4 class="header-title mt-0 m-b-30">Arrest History</h4>
+      <div class="col-12">
+        <h4 class="header-title mt-0 m-b-30">HISTORIAL DE ARRESTOS</h4>
         <hr />';
         if (empty($characterArrests)) {
-        	echo 'No Arrests On File.';
+        	echo 'No posee historial de arrestos.';
         } else {
           echo '<table class="table table-borderless">
                   <thead>
                     <tr>
-                        <th>Officer</th>
-                        <th>Timestamp</th>
-                        <th>Summary</th>
+                        <th>OFICIAL</th>
+                        <th>FECHA DE REGISTRO</th>
+                        <th>SUMARIO</th>
                     </tr>
                   </thead>
                   <tbody>';
@@ -108,7 +109,10 @@
         		echo '<tr>
                     <td>' . $arrest['arresting_officer'] . '</td>
                     <td>' . $arrest['timestamp'] . '</td>
-                    <td>' . $arrest['summary'] . '</td>
+                    <td><details>
+                      <summary>Ver</summary>
+                      ' . $arrest['summary'] . '
+                    </details></td>
                 </tr>';
         	}
         	echo '</tbody>
@@ -120,19 +124,19 @@
 
     <div class="row">
       <div class="col-12">
-        <h4 class="header-title mt-0 m-b-30">Warrants</h4>
+        <h4 class="header-title mt-0 m-b-30">ALL POINTS BULLETIN</h4>
         <hr />';
         if (empty($characterWarrants)) {
-          echo '<div class="alert alert-success" role="alert">No Active Warrants</div>';
+          echo '<div class="alert alert-success" role="alert">No hay alertas activas.</div>';
         } else {
           echo '<table class="table table-borderless">
                   <thead>
                     <tr>
-                        <th>Issued On</th>
-                        <th>Signed By</th>
-                        <th>Reason</th>';
+                        <th>FECHA DE EMISIÓN</th>
+                        <th>EMITIDO POR</th>
+                        <th>RAZÓN</th>';
                         if ($_SESSION['identity_supervisor'] === "Yes" || staff_siteSettings) {
-                          echo '<th>Actions</th>';
+                          echo '<th>Acciones</th>';
                         }
                         echo '
                     </tr>
@@ -144,7 +148,7 @@
                     <td>' . $warrant['signed_by'] . '</td>
                     <td>' . $warrant['reason'] . '</td>';
                     if ($_SESSION['identity_supervisor'] === "Yes" || staff_siteSettings) {
-                      echo '<td><input type="button" class="btn btn-danger btn-sm" name="deleteWarrant" value="Delete Warrant" id='.$warrant['warrant_id'].' onclick="deleteWarrantLEO(this)"></td>';
+                      echo '<td><input type="button" class="btn btn-danger btn-sm" name="deleteWarrant" value="Eliminar APB" id='.$warrant['warrant_id'].' onclick="deleteWarrantLEO(this)"></td>';
                     }
                     echo '
                 </tr>';
