@@ -1,5 +1,5 @@
-# System Requirements
-- Operating System
+# REQUISITOS BÁSICOS
+- SISTEMAS OPERATIVOS VÁLIDOS
 - Linux
 - Windows
 + PHP Version
@@ -12,17 +12,17 @@
 # Known Issues
 - N/A
 
-# License
+# LICENCIA
 CAD-MDT is released under GNU Affero General Public License.
 You can view the license terms and conditions at https://www.gnu.org/licenses/agpl-3.0.en.html 
 
-# Installation
-- Download the latest version from GitHub.
-- Navigate to **sql/new users/**, and import that SQL file on your database.
-- Move the contents from the *Upload* folder, into your website directory.
-- Navigate to **includes/connect.php**, and open it with a text-editor.
-- Change the database information to yours.
-- Go to **www.your-site.com/cad-directory/register.php**
-- Create an account
-- In your database under `users`, Find the newly created account and set the `usergroup` to **Management**
-- Done! You now have full access over your CAD/MDT system.
+# INSTALACIÓN
+- Descarga la última versión del github.
+- Navega a **sql/new users/**, e importa la base de datos.
+- Mueve contenidos del directorio *Upload*, al directorio del sitio web.
+- Navega a **includes/connect.php**, y editalo con tu IDE preferido.
+- Cambiar la información de conexión por la tuya.
+- Navega a **www.your-site.com/cad-directory/register.php**
+- Crea una cuenta
+- En la base de datos en la tabla `users`, Encuentrate y establece el `usergroup` a **Management**
+- Listo, ya tienes acceso a tu CAD.
